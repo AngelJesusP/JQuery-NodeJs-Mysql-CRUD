@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principla</title>
+    <link rel="stylesheet" href="/Css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex">
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-header text-center">
+                    <label>INGRESE LOS DATOS DEL ESTUDIANTE</label>
+                </div>
+                <div class="card-body">
+                    <div class="contenido">
+                        <div class="row">
+                            <label for="codigoEstudiante">* CODIGO: </label>
+                            <input type="text" class="form-control" placeholder="Ingrese el codigo del estudiante" autocomplete="off" id="codigoEstudiante">
+                        </div>
+                        <div class="row mt-3">
+                            <label for="codigoEstudiante">* NOMBRE: </label>
+                            <input type="text" class="form-control" placeholder="Ingrese el nombre del estudiante" autocomplete="off" id="nombre">
+                        </div>
+                        <div class="row mt-3">
+                            <label for="codigoEstudiante">* APELLIDO: </label>
+                            <input type="text" class="form-control" placeholder="Ingrese el apellido del estudiante" autocomplete="off" id="apellido">
+                        </div>
+                        <div class="row mt-3">
+                            <label for="codigoEstudiante">* TELEFONO: </label>
+                            <input type="text" class="form-control" placeholder="(57) 000-000000" autocomplete="off" id="telefono">
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-outline-success mt-5 w-100" id="btnEnviar">Agregar</button>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-outline-info mt-4 w-100" id="btnActualizar">Actualizar</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <table class="table table-hover" id="tabla">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>telefono</th>
+                        <th>fecha Ingreso</th>
+                        <th>ACCION</th>
+                    </tr>
+                </thead>
+                <tbody style="cursor: pointer;">
+                    <% for(let i = 0; i < data.length; i++) { %>
+                        <tr onclick="enviarRegistroInputsEditar(this)">
+                            <td><%=  data[i].codigoEstudiante %></td>
+                            <td><%=  data[i].nombre %></td>
+                            <td><%=  data[i].apellido %></td>
+                            <td><%=  data[i].telefono %></td>
+                            <td><%=  data[i].fechaIngreso %></td>
+                            <td>
+                                <input type="hidden" value="<%=  data[i].codigoEstudiante %>" id="codigoEliminar">
+                                <button class="btn btn-danger" id="btnEliminar">Eliminar</button>
+                            </td>
+                        </tr>
+                    <% } %>    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="/Js/jquery-3.5.1.js"></script>
+    <script src="/Js/app.js"></script>
+</body>
+</html>
